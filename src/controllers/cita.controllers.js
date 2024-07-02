@@ -34,8 +34,9 @@ const update = catchError(async(req, res) => {
 		body,
 		{ where: {id}, returning: true }
 	);
-	if(result[1] === 0) return res.status(404).json({message: "Cita no encontrada por ende no actualizada"})
-	return res.status(200).json({message: "Cita actualizada exitosamente"})
+	if(result[1] === 0) return res.status(404).json({message: "Cita no encontrada por ende no actualizada"});
+	const getCita = await Cita.findAll()
+	return res.status(200).json({message: "Cita actualizada exitosamente", getCita})
 });
 
 
