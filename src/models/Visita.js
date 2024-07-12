@@ -1,56 +1,62 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utils/connection');
 
-const Paciente = sequelize.define('paciente', {
-	Nombres: {
+const Visita = sequelize.define('visitas', {
+	FechaAdd: {
+		type: DataTypes.DATEONLY,
+		allowNull: false
+	},
+	HoraAdd: {
+		type: DataTypes.TIME,
+		allowNull: false
+	},
+	Sistolica: {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	Apellidos: {
+	Diastolica: {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	Telefono: {
+	Pulsaciones: {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	Edad: {
-		type: DataTypes.INTEGER,
-		allowNull: false
-	},
-	Sexo: {
+	Glucosa: {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	Altura: {
+	Digestion: {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	Peso: {
+	Observacion: {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	Identificacion: {
-		type: DataTypes.INTEGER,
-		allowNull: false,
-		unique:true
-	},
-	Estado: {
+	ProblemasEquilibrio: {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	FechaIngreso: {
-		type: DataTypes. DATEONLY,
-		allowNull: false
-	},
-	Alcoholismo: {
+	DolorCabeza: {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
 
+	Recomendacion: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+
+	Malestar: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+    //malestar
+	
+	//medicamentos
 
 	
 });
 
-
-module.exports = Paciente;
+module.exports = Visita;

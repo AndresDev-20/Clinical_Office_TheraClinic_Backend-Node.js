@@ -5,9 +5,30 @@ const Medicamento = require('../models/Medicamento');
 const Cita = require('../models/Cita');
 const Enfermedad = require('../models/Enfermedad');
 const Alergia = require('../models/Alergia');
+const Visita = require('../models/Visita');
 
 const getAll = catchError(async(req, res) => {
-	const results = await Paciente.findAll({include: [Malestar, Medicamento, Cita, Enfermedad, Alergia]});
+	const results = await Paciente.findAll({include: [
+		{
+		  model: Malestar
+		},
+		{
+		  model: Medicamento
+		},
+		{
+		  model: Cita
+		},
+		{
+		  model: Enfermedad
+		},
+		{
+		  model: Alergia
+		},
+		{
+		  model: Visita, 
+		  include: [Malestar, Medicamento] 
+		}
+	  ]});
 	return res.json(results);
 });
 
@@ -19,7 +40,27 @@ const create = catchError(async(req, res) => {
 
 const getOne = catchError(async(req, res) => {
 	const { id } = req.params;
-	const result = await Paciente.findByPk(id, {include: [Malestar, Medicamento, Cita, Enfermedad, Alergia]});
+	const result = await Paciente.findByPk(id, {include: [
+		{
+		  model: Malestar
+		},
+		{
+		  model: Medicamento
+		},
+		{
+		  model: Cita
+		},
+		{
+		  model: Enfermedad
+		},
+		{
+		  model: Alergia
+		},
+		{
+		  model: Visita, 
+		  include: [Malestar, Medicamento] 
+		}
+	  ]});
 	if(!result) return res.status(404).json({message: "El usuario no existe"});
 	return res.json(result);
 });

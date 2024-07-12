@@ -10,6 +10,10 @@ const Medicamento = sequelize.define('medicamento', {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
+	Fecha: {
+		type: DataTypes.DATEONLY,
+		allowNull:false
+	}
 });
 
 module.exports = Medicamento;

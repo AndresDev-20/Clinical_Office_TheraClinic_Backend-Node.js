@@ -6,6 +6,8 @@ const routerMedicamento = require('./medicamento.router');
 const routerEnfermedad = require('./enfermedad.router');
 const routerMalestar = require('./malestar.router');
 const routerAlergia = require('./alergia.controllers');
+const routerObservacion = require('./observacion.router');
+const routerVisita = require('./visita.router');
 const router = express.Router();
 
 // colocar las rutas aquí
@@ -16,6 +18,8 @@ router.use("/medicamentos", routerMedicamento)
 router.use("/enfermedades", routerEnfermedad)
 router.use("/malestares", routerMalestar)
 router.use("/alergias", routerAlergia)
+router.use("/observaciones", routerObservacion)
+router.use("/visitas", routerVisita)
 
 
 module.exports = router;
