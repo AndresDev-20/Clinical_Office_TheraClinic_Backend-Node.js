@@ -47,6 +47,25 @@ const Paciente = sequelize.define('paciente', {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
+	Localidad: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+	EstadoCivil: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+	Referido: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+	Queaser: {
+		type: DataTypes.STRING,
+		allowNull: false
+	}
+
+
+	//Acompañamte
 
 
 	

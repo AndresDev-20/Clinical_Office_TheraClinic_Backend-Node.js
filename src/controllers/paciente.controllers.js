@@ -6,6 +6,9 @@ const Cita = require('../models/Cita');
 const Enfermedad = require('../models/Enfermedad');
 const Alergia = require('../models/Alergia');
 const Visita = require('../models/Visita');
+const Archivo = require('../models/Archivo');
+const Acompañante = require('../models/Acompañante');
+const Deuda = require('../models/Deuda');
 
 const getAll = catchError(async(req, res) => {
 	const results = await Paciente.findAll({include: [
@@ -27,6 +30,15 @@ const getAll = catchError(async(req, res) => {
 		{
 		  model: Visita, 
 		  include: [Malestar, Medicamento] 
+		},
+		{
+			model: Archivo
+		},
+		{
+			model: Acompañante
+		},
+		{
+			model: Deuda
 		}
 	  ]});
 	return res.json(results);
@@ -59,6 +71,15 @@ const getOne = catchError(async(req, res) => {
 		{
 		  model: Visita, 
 		  include: [Malestar, Medicamento] 
+		},
+		{
+			model: Archivo
+		},
+		{
+			model: Acompañante
+		},
+		{
+			model: Deuda
 		}
 	  ]});
 	if(!result) return res.status(404).json({message: "El usuario no existe"});
