@@ -1,18 +1,17 @@
-const app = require('./app');
-const sequelize = require('./utils/connection');
-require("./models/index")
-
+const app = require('./app')
+const sequelize = require("./utils/connection")
 const PORT = process.env.PORT || 8080;
 
-const main = async () => {
+
+const main = async() => {
     try {
-        sequelize.sync();
-        console.log("DB connected");
-        app.listen(PORT);
-        console.log(`Server running on port ${PORT}`);
+        await sequelize.sync();
+        console.log("Base de datos conectada")
+        app.listen(PORT)
+        console.log(`Servidor levantado en el puerto ${PORT}`)
     } catch (error) {
-        console.log(error)
+        console.log("Error en conexion")
     }
 }
 
-main();
+main()
