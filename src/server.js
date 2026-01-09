@@ -7,7 +7,7 @@ const UTL = `http://localhost:${PORT}`
 async function startServer() {
     try {
         await sequelize.authenticate();
-        console.log("Conexión a la base de datos establecida");
+        console.log("✅ Conexión a la base de datos establecida");
 
         app.listen(PORT, () => {
             console.log(`Server Project Running on ${URL} 😼`);
