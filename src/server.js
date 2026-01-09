@@ -18,3 +18,5 @@ async function startServer() {
         process.exit(1); // Finaliza el proceso si no hay conexión
     }
 }
+
+startServer();
