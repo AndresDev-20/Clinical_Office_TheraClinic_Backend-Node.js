@@ -2,7 +2,7 @@ const { sequelize } = require('./api/models');
 const app = require('./app')
 
 const PORT = process.env.PORT || 8080;
-const UTL = `http://localhost:${PORT}`
+const URL = `http://localhost:${PORT}`
 
 async function startServer() {
     try {
