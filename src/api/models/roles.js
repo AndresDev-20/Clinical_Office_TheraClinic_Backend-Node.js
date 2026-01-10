@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    isActive: DataTypes.BOOLEAN
+    isActive: 
   }, {
     sequelize,
     modelName: 'Roles',
