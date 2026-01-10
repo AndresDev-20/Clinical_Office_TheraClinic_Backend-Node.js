@@ -19,7 +19,10 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       allowNull: false
     },
-    description:,
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     isActive: DataTypes.BOOLEAN
   }, {
     sequelize,
