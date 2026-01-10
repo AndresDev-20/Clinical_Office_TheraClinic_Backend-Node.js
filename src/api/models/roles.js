@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       allowNull: false
     },
-    description: DataTypes.STRING,
+    description:,
     isActive: DataTypes.BOOLEAN
   }, {
     sequelize,
