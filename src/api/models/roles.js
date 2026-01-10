@@ -23,7 +23,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    isActive: 
+    isActive: {
+      
+    }
   }, {
     sequelize,
     modelName: 'Roles',
