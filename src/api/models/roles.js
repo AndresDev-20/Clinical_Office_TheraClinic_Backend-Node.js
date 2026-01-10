@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     isActive: {
+      allowNull: false,
       
     }
   }, {
