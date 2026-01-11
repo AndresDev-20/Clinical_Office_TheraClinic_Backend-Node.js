@@ -16,7 +16,7 @@ module.exports = {
       },
       description: {
         type: Sequelize.STRING,
-        allowNull: flase
+        allowNull: false
       },
       is_active: {
         type: Sequelize.BOOLEAN,
