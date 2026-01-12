@@ -55,7 +55,7 @@ npx sequelize-cli db:migrate
 
 ## 📌 Funcionalidades implementadas hasta ahora
 
-- Configuración base de Sequelize con SQLite.  
+- Configuración base de Sequelize con Mysql.  
 - Creación de la tabla **Roles** mediante migración.  
 - Modelo `Roles` asociado correctamente al ORM.  
 - Refactor de la estructura del proyecto para mantener un patrón limpio y escalable.  
