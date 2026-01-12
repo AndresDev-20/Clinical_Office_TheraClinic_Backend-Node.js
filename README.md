@@ -11,7 +11,7 @@ Actualmente está siendo **refactorizado y modernizado** utilizando tecnologías
 | Área | Tecnología |
 |------|------------|
 | Backend | Node.js, Express.js |
-| Base de datos | SQLite (modo local), Sequelize ORM |
+| Base de datos | MySQL (modo local), Sequelize ORM |
 | Control de versiones | Git & GitHub |
 | Migraciones y modelos | Sequelize-CLI |
 
@@ -20,15 +20,18 @@ Actualmente está siendo **refactorizado y modernizado** utilizando tecnologías
 ## 📁 Estructura del proyecto (actual)
 
 ```
-/src
- ├── api
- │    ├── config
- │    ├── controllers
- │    ├── database
- │    ├── middlewares
- │    ├── models
- │    └── routes
- └── index.js
+Backend/
+├── src/
+│ ├── api/
+│ │ ├── config/
+│ │ ├── controllers/
+│ │ ├── models/
+│ │ ├── migrations/
+│ │ └── routes/
+│ └── server.js
+├── .sequelizerc
+├── package.json
+└── README.md
 ```
 
 ---
