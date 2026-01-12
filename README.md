@@ -96,6 +96,6 @@ para que sea más **rápido, seguro, modular** y adaptable a nuevas necesidades.
 ---
 
 ## 👨‍💻 Autor  
-Proyecto desarrollado por **Yeison Andrés Marroquín Bernal**  
+Proyecto desarrollado por **Yeison Andrés Marroquín Bernal**👨‍💻  
 Ingeniero de software – Full Stack Developer.
 
