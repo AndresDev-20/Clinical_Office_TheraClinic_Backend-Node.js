@@ -14,8 +14,16 @@ const addRol = catchError(async(req, res) => {
     return res.status(201).json({message: "El rol se creo exitosamente", newRol})
 })
 
+const updateRole = catchError(async(req, res) => {
+    const { id } = req.params;
+    const data = req.body;
+    const roleUpdate = await Roles.update(data, {where: {id}})
+    if(roleUpdate[0] === 0) return res.status(404).json({error: "El rol no se actualizo porque no existe en la base de datos"})
+    return res.json({menssage: "El rol se actualizo exitosamente"});
+})
 
 module.exports = {
     getAllRoles,
-    addRol
+    addRol,
+    updateRole
 }
