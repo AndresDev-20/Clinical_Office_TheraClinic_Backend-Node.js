@@ -4,3 +4,4 @@ const catchError = controller => {
     };
 };
 
+module.exports = catchError;
