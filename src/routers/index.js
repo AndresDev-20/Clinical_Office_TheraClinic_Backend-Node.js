@@ -3,3 +3,5 @@ const roleRouter = require('./role.routes');
 
 const router = express.Router();
 router.use("/roles", roleRouter)
+
+module.exports = router;

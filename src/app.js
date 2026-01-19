@@ -1,6 +1,7 @@
 const express = require('express')
 const helmet = require('helmet')
 const cors = require('cors')
+const router = require("./routers")
 
 
 // Esta es nuestra app
@@ -12,5 +13,8 @@ app.use(helmet({
     crossOriginResourcePolicy: false,
 }));
 app.use(cors());
+
+// Rutas del proyecto
+app.use('/api/v1', router)
 
 module.exports = app;
