@@ -14,6 +14,7 @@ const addRol = catchError(async(req, res) => {
     return res.status(201).json({message: "El rol se creo exitosamente", newRol})
 })
 
+// Actualizar rol
 const updateRole = catchError(async(req, res) => {
     const { id } = req.params;
     const data = req.body;
