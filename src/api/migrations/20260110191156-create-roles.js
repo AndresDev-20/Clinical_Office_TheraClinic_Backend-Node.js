@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name_role: {
+      nameRole: {
         type: Sequelize.STRING,
         unique: true,
         allowNull: false
@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      is_active: {
+      isActive: {
         type: Sequelize.BOOLEAN,
         allowNull: false
       },

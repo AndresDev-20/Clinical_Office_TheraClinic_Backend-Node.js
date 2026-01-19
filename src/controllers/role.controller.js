@@ -1,16 +1,16 @@
-const {Roles} = require("../api/models")
+const {Role} = require("../api/models")
 const catchError = require("../utils/catchError")
 
 // Visualizacion de roles
 const getAllRoles = catchError(async(req, res) => {
-    const roles = await Roles.findAll()
+    const roles = await Role.findAll();
     return res.status(201).json(roles)
 })
 
 // Creacion de un rol
 const addRol = catchError(async(req, res) => {
     const data = req.body;
-    const newRol = await Roles.create(data)
+    const newRol = await Role.create(data)
     return res.status(201).json({message: "El rol se creo exitosamente", newRol})
 })
 
@@ -18,7 +18,7 @@ const addRol = catchError(async(req, res) => {
 const updateRole = catchError(async(req, res) => {
     const { id } = req.params;
     const data = req.body;
-    const roleUpdate = await Roles.update(data, {where: {id}})
+    const roleUpdate = await Role.update(data, {where: {id}})
     if(roleUpdate[0] === 0) return res.status(404).json({error: "El rol no se actualizo porque no existe en la base de datos"})
     return res.json({menssage: "El rol se actualizo exitosamente"});
 })
@@ -26,7 +26,7 @@ const updateRole = catchError(async(req, res) => {
 // Eliminar rol
 const deleteRole = catchError(async(req, res) => {
     const { id } = req.params;
-    const rolDelete = await Roles.destroy({where: {id}})
+    const rolDelete = await Role.destroy({where: {id}})
     if(rolDelete !== 1) return res.status(404).json({error:"Rol no encontrado"});
     return res.status(204).send();
 })
