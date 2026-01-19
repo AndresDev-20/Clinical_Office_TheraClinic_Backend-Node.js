@@ -23,8 +23,17 @@ const updateRole = catchError(async(req, res) => {
     return res.json({menssage: "El rol se actualizo exitosamente"});
 })
 
+// Eliminar rol
+const deleteRole = catchError(async(req, res) => {
+    const { id } = req.params;
+    const rolDelete = await Roles.destroy({where: {id}})
+    if(rolDelete !== 1) return res.status(404).json({error:"Rol no encontrado"});
+    return res.status(204).send();
+})
+
 module.exports = {
     getAllRoles,
     addRol,
-    updateRole
+    updateRole,
+    deleteRole
 }
