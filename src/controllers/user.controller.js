@@ -10,7 +10,7 @@ const getAllUsers = catchError(async(req, res) => {
             as: 'role'
         }});
     return res.status(201).json(users)
-})
+});
 
 // Filtered by id
 const getUsersById = catchError(async(req, res) => {
@@ -29,9 +29,7 @@ const create = catchError(async(req, res) => {
     if(!rol) return res.status(404).json({Message: "El rol no existe por lo que el usurio no se puede crear"});
     const newUser = await User.create(data)
     return res.status(201).json({message: "Usuario creado", newUser})
-})
-
-
+});
 
 
 module.exports = {
