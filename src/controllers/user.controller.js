@@ -1,6 +1,7 @@
 const {User, Role} = require("../api/models")
 const catchError = require("../utils/catchError")
 
+
 // Viewing users
 const getAllUsers = catchError(async(req, res) => {
     const users = await User.findAll({
@@ -11,6 +12,16 @@ const getAllUsers = catchError(async(req, res) => {
     return res.status(201).json(users)
 })
 
+// Filtered by id
+const getUsersById = catchError(async(req, res) => {
+    const { id } = req.params;
+    const user = await User.findByPk(
+        id
+    )
+    if(!user) return res.status(404).json({error:"El usuario no existe en la base de datos"});
+    return res.status(201).json(user)
+});
+
 // Add new user
 const create = catchError(async(req, res) => {
     const data = req.body;
@@ -20,7 +31,10 @@ const create = catchError(async(req, res) => {
     return res.status(201).json({message: "Usuario creado", newUser})
 })
 
+// 
+
 module.exports = {
     getAllUsers,
-    create
+    create,
+    getUsersById
 }
