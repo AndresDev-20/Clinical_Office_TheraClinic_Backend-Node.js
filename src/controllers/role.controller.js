@@ -1,6 +1,7 @@
 const {Role} = require("../api/models")
 const catchError = require("../utils/catchError")
 
+
 // Visualizacion de roles
 const getAllRoles = catchError(async(req, res) => {
     const roles = await Role.findAll();
