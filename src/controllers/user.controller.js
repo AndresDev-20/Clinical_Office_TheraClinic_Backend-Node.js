@@ -31,7 +31,10 @@ const create = catchError(async(req, res) => {
     return res.status(201).json({message: "Usuario creado", newUser})
 })
 
-// 
+// Update a user
+const update = catchError(async(req, res) => {
+    
+})
 
 module.exports = {
     getAllUsers,
