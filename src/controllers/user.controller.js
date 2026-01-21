@@ -1,4 +1,3 @@
-const { where } = require("sequelize");
 const {User, Role} = require("../api/models")
 const catchError = require("../utils/catchError")
 const bcrypt = require('bcrypt')
