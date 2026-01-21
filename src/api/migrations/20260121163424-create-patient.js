@@ -53,6 +53,16 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      office_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "Offices",
+          key: "id",
+        },
+        onDelete: "RESTRICT",
+        onUpdate: "CASCADE",
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

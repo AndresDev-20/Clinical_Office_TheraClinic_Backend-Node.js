@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Patient.belongsTo(models.Office, {
+        foreignKey: 'office_id',
+        as: "role"
+      })
     }
   }
   Patient.init({
@@ -68,6 +72,10 @@ module.exports = (sequelize, DataTypes) => {
       labor_queaser: {
         type: DataTypes.STRING,
         allowNull: true
+      },
+      office_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       }
   }, {
     sequelize,
