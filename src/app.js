@@ -18,6 +18,11 @@ app.use(cors());
 // Rutas del proyecto
 app.use('/api/v1', router)
 
+// Ruta por defecto
+app.get("/", (req, res) => {
+    res.json({Message: "Hello, this is my backend of clinical"})
+})
+
 // middlewares después de las rutas
 app.use(errorHandler)
 
