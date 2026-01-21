@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const {User, Role} = require("../api/models")
 const catchError = require("../utils/catchError")
 const bcrypt = require('bcrypt')
@@ -35,12 +36,21 @@ const create = catchError(async(req, res) => {
 
 // update user
 const update = catchError(async(req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
+    const {names, cc, email, password, role_id} = req.body;
+    const haschedPassword = await bcrypt.hash(password, 10);
+    const updateUser = await User.update(
+        {names, cc, email, password:haschedPassword, role_id },
+        {where: {id}}
+    )
+    if(updateUser[0] !== 1) return res.status(404).json({error: "El usuario no existe en la base de datos"});
+    return res.status(200).json({message: "Usuario actualizado"})
 })
 
 
 module.exports = {
     getAllUsers,
     create,
-    getUsersById
+    getUsersById,
+    update
 }
