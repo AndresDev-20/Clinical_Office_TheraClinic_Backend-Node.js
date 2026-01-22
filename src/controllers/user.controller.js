@@ -1,4 +1,5 @@
-const {User, Role} = require("../api/models")
+const {User, Role} = require("../api/models");
+const { generateToken } = require("../utils/auth/jwt");
 const catchError = require("../utils/catchError")
 const bcrypt = require('bcrypt')
 
@@ -73,8 +74,12 @@ const login = catchError(async(req, res) => {
         id: user.id,
         role: user.role.nameRole
     }
-    console.log(verifyPassword);
-    
+    const token = generateToken(payload);
+    return res.status(200).json({
+        message: "Login exitoso",
+        Token: token,
+        user: payload
+    })
 })
 
 module.exports = {
