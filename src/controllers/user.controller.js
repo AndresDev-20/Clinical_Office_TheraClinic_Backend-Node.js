@@ -54,10 +54,18 @@ const update = catchError(async(req, res) => {
     return res.status(200).json({message: "Usuario actualizado"})
 })
 
+// Delete User by Id
+const remove = catchError(async(req, res) => {
+    const { id } = req.params;
+    const removeUser = await User.destroy({where: {id}})
+    if(removeUser !== 1) return res.status(404).json({error: "El usuario no se encontro"});
+    return res.status(204).send();
+})
 
 module.exports = {
     getAllUsers,
     create,
     getUsersById,
-    update
+    update,
+    remove
 }
