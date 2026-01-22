@@ -65,7 +65,7 @@ const remove = catchError(async(req, res) => {
 // Loggin of user
 const login = catchError(async(req, res) => {
     const {cc, password} = req.body;
-    
+    const user = await User.findOne({where: {cc}, include: [{model:Role, as: "role"}]})
 })
 
 module.exports = {
@@ -73,5 +73,6 @@ module.exports = {
     create,
     getUsersById,
     update,
-    remove
+    remove,
+    login
 }
