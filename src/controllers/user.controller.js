@@ -62,6 +62,12 @@ const remove = catchError(async(req, res) => {
     return res.status(204).send();
 })
 
+// Loggin of user
+const login = catchError(async(req, res) => {
+    const {cc, password} = req.body;
+    
+})
+
 module.exports = {
     getAllUsers,
     create,
