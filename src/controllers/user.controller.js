@@ -66,7 +66,14 @@ const remove = catchError(async(req, res) => {
 const login = catchError(async(req, res) => {
     const {cc, password} = req.body;
     const user = await User.findOne({where: {cc}, include: { model: Role, as: 'role'}})
-    console.log(user);
+    if(!user) return res.status(404).json({error: "El usuario no existe en la base de datos"});
+    const verifyPassword = await bcrypt.compare(password, user.password);
+    if(!verifyPassword) return res.status(404).json({message: "Contraseña incorrecta"});
+    const payload = {
+        id: user.id,
+        role: user.role.nameRole
+    }
+    console.log(verifyPassword);
     
 })
 
