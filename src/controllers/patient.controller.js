@@ -31,6 +31,11 @@ const update = catchError(async(req, res) => {
     if(updatePatiente[0] === 0) return res.status(404).json({Error: "El paciente no se encontro en la base de datos"})
 })
 
+// Delete patient by id
+const remove = catchError(async(req, res) => {
+    
+})
+
 module.exports = {
     getAllPatient,
     getOne,
