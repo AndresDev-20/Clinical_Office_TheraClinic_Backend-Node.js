@@ -33,12 +33,16 @@ const update = catchError(async(req, res) => {
 
 // Delete patient by id
 const remove = catchError(async(req, res) => {
-    
+    const { id } = req.params;
+    const removePatient = await Patient.destroy(id);
+    if(removePatient !== 1) return res.status(404).json({error: "El paciente no se encontro"});
+    return res.status(204).send();
 })
 
 module.exports = {
     getAllPatient,
     getOne,
     create,
-    update
+    update,
+    remove
 }
