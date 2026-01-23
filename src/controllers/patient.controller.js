@@ -16,11 +16,16 @@ const getOne = catchError(async(req, res) => {
     return res.status(201).json(patient)
 })
 
-// New User
+// New patient
 const create = catchError(async(req, res) => {
     const data = req.body;
     const newPatient = await Patient.create(data);
     return res.status(201).json({Message: "Usuario creado", newPatient});
+})
+
+// Update patient by id
+const update = catchError(async(req, res) => {
+    const { id } = req.params;k
 })
 
 module.exports = {
