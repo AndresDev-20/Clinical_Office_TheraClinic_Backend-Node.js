@@ -25,7 +25,9 @@ const create = catchError(async(req, res) => {
 
 // Update patient by id
 const update = catchError(async(req, res) => {
-    const { id } = req.params;k
+    const { id } = req.params;
+    const data = req.body;
+    const updatePatiente = await Patient.update(data, {where: {id}})
 })
 
 module.exports = {
