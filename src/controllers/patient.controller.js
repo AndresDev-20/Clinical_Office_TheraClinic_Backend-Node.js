@@ -12,8 +12,8 @@ const getAllPatient = catchError(async(req, res) => {
 const getOne = catchError(async(req, res) => {
     const { id } = req.params;
     const patient = await Patient.findByPk(id);
-    console.log(patient);
-    
+    if(!patient) return res.status(404).json({message: "El paciente no se encuentra en nuestra base de datos"});
+    return res.status(201).json(patient)
 })
 
 module.exports = {
