@@ -11,9 +11,12 @@ const getAllPatient = catchError(async(req, res) => {
 // Filter by id
 const getOne = catchError(async(req, res) => {
     const { id } = req.params;
-    const patient = await Patient.findByPk();
+    const patient = await Patient.findByPk(id);
+    console.log(patient);
+    
 })
 
 module.exports = {
-    getAllPatient
+    getAllPatient,
+    getOne
 }
