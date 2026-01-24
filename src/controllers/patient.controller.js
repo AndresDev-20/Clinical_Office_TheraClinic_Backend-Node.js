@@ -16,7 +16,7 @@ const getOne = catchError(async(req, res) => {
     return res.status(201).json(patient)
 })
 
-// New patient
+// Add new patient
 const create = catchError(async(req, res) => {
     const data = req.body;
     const newPatient = await Patient.create(data);

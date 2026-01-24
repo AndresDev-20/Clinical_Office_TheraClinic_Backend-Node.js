@@ -16,6 +16,11 @@ const getOne = catchError(async(req, res) => {
     return res.status(201).json(office)
 })
 
+// Add new office
+const craete = catchError(async(req, res) => {
+    
+})
+
 module.exports = {
     getAllOffices,
     getOne
