@@ -32,9 +32,18 @@ const update = catchError(async(req, res) => {
 
 })
 
+// Remove office
+const remove = catchError(async(req, res) => {
+    const { id } = req.params;
+    const removeOffice = await Office.destroy(id);
+    if(removeOffice !== 1) return res.status(404).json({Error: "El consultorio no se encontro"});
+    return res.status(204).send()
+})
+
 module.exports = {
     getAllOffices,
     getOne,
     create, 
-    update
+    update,
+    remove
 }
