@@ -17,11 +17,16 @@ const getOne = catchError(async(req, res) => {
 })
 
 // Add new office
-const craete = catchError(async(req, res) => {
-    
+const create = catchError(async(req, res) => {
+    const data = req.body;
+    const newOffice = await Office.create(data);
+    return res.status(201).json(newOffice)
 })
+
+// 
 
 module.exports = {
     getAllOffices,
-    getOne
+    getOne,
+    create
 }
