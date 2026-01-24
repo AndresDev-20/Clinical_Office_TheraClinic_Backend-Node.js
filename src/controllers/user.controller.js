@@ -33,7 +33,7 @@ const getUsersById = catchError(async(req, res) => {
 });
 
 // Add new user
-const create = catchError(async(req, res) => {
+const createUser = catchError(async(req, res) => {
     const {names, cc, email, password, role_id} = req.body;
     const rol = await Role.findByPk(role_id);
     const haschedPassword = await bcrypt.hash(password, 10)
@@ -43,23 +43,23 @@ const create = catchError(async(req, res) => {
 });
 
 // update user
-const update = catchError(async(req, res) => {
+const updateUser = catchError(async(req, res) => {
     const { id } = req.params;
     const {names, cc, email, password, role_id} = req.body;
     const haschedPassword = await bcrypt.hash(password, 10);
-    const updateUser = await User.update(
+    const userUpdate = await User.update(
         {names, cc, email, password:haschedPassword, role_id },
         {where: {id}}
     )
-    if(updateUser[0] !== 1) return res.status(404).json({error: "El usuario no existe en la base de datos"});
+    if(userUpdate[0] !== 1) return res.status(404).json({error: "El usuario no existe en la base de datos"});
     return res.status(200).json({message: "Usuario actualizado"})
 })
 
 // Delete User by Id
-const remove = catchError(async(req, res) => {
+const removeUser = catchError(async(req, res) => {
     const { id } = req.params;
-    const removeUser = await User.destroy({where: {id}})
-    if(removeUser !== 1) return res.status(404).json({error: "El usuario no se encontro"});
+    const userDelete = await User.destroy({where: {id}})
+    if(userDelete !== 1) return res.status(404).json({error: "El usuario no se encontro"});
     return res.status(204).send();
 })
 
@@ -84,9 +84,9 @@ const login = catchError(async(req, res) => {
 
 module.exports = {
     getAllUsers,
-    create,
+    createUser,
     getUsersById,
-    update,
-    remove,
+    updateUser,
+    removeUser,
     login
 }
