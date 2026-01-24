@@ -28,7 +28,8 @@ const update = catchError(async(req, res) => {
     const { id } = req.params;
     const data = req.body;
     const updatePatiente = await Patient.update(data, {where: {id}})
-    if(updatePatiente[0] === 0) return res.status(404).json({Error: "El paciente no se encontro en la base de datos"})
+    if(updatePatiente[0] === 0) return res.status(404).json({Error: "El paciente no se encontro en la base de datos"});
+    return res.status(201).json({Message: "Paciente actualizado "})
 })
 
 // Delete patient by id
