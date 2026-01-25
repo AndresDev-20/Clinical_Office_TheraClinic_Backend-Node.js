@@ -11,11 +11,23 @@ module.exports = {
       },
       patient_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: "Patient",
+          key: "id"
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'RESTRICT'
       },
       doctor_id: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'RESTRICT'
       },
       state: {
         type: Sequelize.BOOLEAN,
