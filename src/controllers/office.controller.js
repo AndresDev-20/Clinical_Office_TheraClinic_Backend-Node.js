@@ -29,13 +29,13 @@ const updateOffice = catchError(async(req, res) => {
     const data = req.body;
     const officeUpdate = await Office.update(data, {where: {id}});
     if(officeUpdate[0] === 0) return res.status(404).json({Error: "El paciente no se encontro en la base de datos"});
-
+    return res.status(200).json({Message: "Consultorio Actualizado"})
 })
 
 // Remove office
 const removeOffice = catchError(async(req, res) => {
     const { id } = req.params;
-    const officeRemove = await Office.destroy(id);
+    const officeRemove = await Office.destroy({where: {id}});
     if(officeRemove !== 1) return res.status(404).json({Error: "El consultorio no se encontro"});
     return res.status(204).send()
 })

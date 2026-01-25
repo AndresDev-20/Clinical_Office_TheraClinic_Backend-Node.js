@@ -1,17 +1,27 @@
-const { Patient } = require("../api/models")
+const { Patient, Office } = require("../api/models")
 const catchError = require("../utils/catchError")
 
 
 // viewing patient
 const getAllPatient = catchError(async(req, res) => {
-    const patients = await Patient.findAll();
+    const patients = await Patient.findAll({
+        include: {
+            model: Office,
+            as: "office"
+        }
+    });
     return res.status(201).json(patients)
 })
 
 // Filter by id
 const getOnePatient = catchError(async(req, res) => {
     const { id } = req.params;
-    const patient = await Patient.findByPk(id);
+    const patient = await Patient.findByPk(id, {
+        include: {
+            model: Office,
+            as: "office"
+        }
+    });
     if(!patient) return res.status(404).json({Error: "El paciente no se encuentra en nuestra base de datos"});
     return res.status(201).json(patient)
 })
@@ -35,7 +45,7 @@ const updatePatient = catchError(async(req, res) => {
 // Delete patient by id
 const removePatient = catchError(async(req, res) => {
     const { id } = req.params;
-    const patienteRemove = await Patient.destroy(id);
+    const patienteRemove = await Patient.destroy({where: {id}});
     if(patienteRemove !== 1) return res.status(404).json({error: "El paciente no se encontro"});
     return res.status(204).send();
 })

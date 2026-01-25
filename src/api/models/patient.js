@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Patient.belongsTo(models.Office, {
         foreignKey: 'office_id',
-        as: "role"
+        as: "office"
       })
     }
   }
@@ -46,6 +46,11 @@ module.exports = (sequelize, DataTypes) => {
       cedula: {
         type: DataTypes.STRING, // Nunca INTEGER
         unique: true,
+        allowNull: false
+      },
+
+      state: {
+        type: DataTypes.BOOLEAN,
         allowNull: false
       },
 
