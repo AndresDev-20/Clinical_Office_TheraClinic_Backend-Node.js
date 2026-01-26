@@ -18,10 +18,16 @@ module.exports = {
         }
       },
       doctor_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "User",
+          key: "id"
+        }
       },
       office_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        
       },
       startDate: {
         type: Sequelize.DATE
