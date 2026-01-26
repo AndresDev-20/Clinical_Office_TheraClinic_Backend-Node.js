@@ -27,7 +27,11 @@ module.exports = {
       },
       office_id: {
         type: Sequelize.INTEGER,
-        
+        allowNull: false,
+        references:{
+          model: "Office",
+          key: "id"
+        }
       },
       startDate: {
         type: Sequelize.DATE
