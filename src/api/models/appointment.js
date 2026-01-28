@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         as: "office"
       })
     }
+    
   }
   Appointment.init({
     patient_id: DataTypes.INTEGER,
