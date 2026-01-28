@@ -10,7 +10,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       clinical_notes_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "ClinicalNotes",
+          key: "id"
+        }
       },
       product_id: {
         type: Sequelize.INTEGER
