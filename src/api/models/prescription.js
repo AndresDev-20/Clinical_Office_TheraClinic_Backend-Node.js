@@ -18,7 +18,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Prescription.init({
-    clinical_notes_id: DataTypes.INTEGER,
+    clinical_notes_id: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     product_id: DataTypes.INTEGER,
     dose: DataTypes.STRING,
     frequency: DataTypes.STRING,
