@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
       })
 
       Appointment.belongsTo(models.Office, {
-        foreignKey: ""
+        foreignKey: "office_id",
+        as: "office"
       })
     }
   }
