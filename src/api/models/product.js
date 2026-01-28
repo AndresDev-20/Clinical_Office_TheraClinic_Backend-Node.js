@@ -23,9 +23,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     type: {
-      type
+      type: DataTypes.STRINGm,
+      allowNull: false
     },
-    price: DataTypes.STRING
+    price: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'Product',
