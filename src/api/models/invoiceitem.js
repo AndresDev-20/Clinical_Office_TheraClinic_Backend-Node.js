@@ -13,7 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       InvoiceItem.belongsTo(models.Invoice, {
         foreignKey: "invoice_id",
-        
+        as: "invoice"
+      })
+
+      InvoiceItem.belongsTo(models.Product, {
+        foreignKey: "product_id",
+        as: "product"
       })
     }
   }
