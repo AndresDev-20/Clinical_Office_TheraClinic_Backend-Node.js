@@ -18,7 +18,8 @@ module.exports = {
         }
       },
       doctor_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       total: {
         type: Sequelize.INTEGER
