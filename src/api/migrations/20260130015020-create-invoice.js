@@ -20,6 +20,9 @@ module.exports = {
       doctor_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "doctors"
+        }
       },
       total: {
         type: Sequelize.INTEGER
