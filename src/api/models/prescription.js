@@ -22,7 +22,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    product_id: DataTypes.INTEGER,
+    product_id: {
+      type: DataTypes.INTEGER
+    },
     dose: DataTypes.STRING,
     frequency: DataTypes.STRING,
     duration: DataTypes.STRING,
