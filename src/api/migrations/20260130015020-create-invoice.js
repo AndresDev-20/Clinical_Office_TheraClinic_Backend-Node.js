@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: "patients",
-           
+          key: "id"
         }
       },
       doctor_id: {
