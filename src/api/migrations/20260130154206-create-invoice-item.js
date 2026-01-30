@@ -12,7 +12,10 @@ module.exports = {
       invoice_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references
+        references: {
+          model: "invoices",
+          key: "id"
+        }
       },
       product_id: {
         type: Sequelize.INTEGER
