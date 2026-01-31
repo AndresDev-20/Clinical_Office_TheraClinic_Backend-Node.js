@@ -1,3 +1,4 @@
+const { ClinicalRecord } = require("../api/models")
 
 // Viewing clinical records
 // Add new clinical record
