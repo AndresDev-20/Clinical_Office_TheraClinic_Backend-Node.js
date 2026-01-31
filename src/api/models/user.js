@@ -16,9 +16,9 @@ module.exports = (sequelize, DataTypes) => {
         as: "role"
       })
 
-      User.hasMany(models.ClinicalRecords, {
+      User.hasMany(models.ClinicalRecord, {
         foreignKey: "doctor_id",
-        as: "doctors"
+        as: "clinicalRecords"
       })
 
       User.hasMany(models.Appointment, {
@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 
       User.hasMany(models.Invoice, {
         foreignKey: "doctor_id",
-        as: "doctors"
+        as: "invoices"
       })
     }
   }
