@@ -23,9 +23,9 @@ module.exports = (sequelize, DataTypes) => {
 
       Invoice.hasMany(models.InvoiceItem, {
         foreignKey: "invoice_id",
-        as: "InvoiceItem"
+        as: "InvoiceItems"
       })
-      
+
     }
   }
   Invoice.init({
