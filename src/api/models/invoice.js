@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "invoice_id",
         as: "InvoiceItem"
       })
+      
     }
   }
   Invoice.init({
