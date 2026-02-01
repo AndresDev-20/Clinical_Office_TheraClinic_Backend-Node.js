@@ -23,7 +23,13 @@ const getClinicalRecordsById = catchError(async(req, res) => {
 })
 
 // Update clinical record by ID
-const 
+const updateClinicalRecords = catchError(async(res, res) => {
+    const { id } = req.params;
+    const data = req.body;
+    const clinicalUpdate = await ClinicalRecord.update(data, {where: {id}})
+    if(clinicalUpdate[0] === 0) return res.status(404).json({Error: "No se pudo actualizar, no se encontro la historia clinica"});
+    return res.status(200).json({Message: "Historial actualizado"})
+})
 
 // Remove clinical record by ID
 
