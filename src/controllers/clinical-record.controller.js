@@ -32,9 +32,17 @@ const updateClinicalRecords = catchError(async(res, res) => {
 })
 
 // Remove clinical record by ID
+const removeClinicalRecords = catchError(async (req, res) => {
+    const { id } = res.params;
+    const clinicalRemove = await ClinicalRecord.destroy({where: {id}});
+    if(clinicalRemove !== 1) return res.status(404).json({Error: "La histora clinica no se encontro"});
+    return res.status(204).send()
+})
 
 module.exports = {
     getAllClinicalRecords,
     createClinicalRecords,
-    getClinicalRecordsById
+    getClinicalRecordsById,
+    updateClinicalRecords,
+    removeClinicalRecords
 }
