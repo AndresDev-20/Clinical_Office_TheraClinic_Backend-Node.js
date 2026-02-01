@@ -14,8 +14,19 @@ const createClinicalNote = catchError(async(req, res) => {
     return res.status(201).json({Message: "Nota creada"}, newClinicalNote);
 })
 
+// Filter clinical note by ID
+const getClinicalNoteById = catchError(async(req, res) => {
+    const { id } = req.body;
+    const note = await ClinicalNote({where: {id}});
+    if(!note) return res.status(404).json({Err: "No se encontro el registro de la nota en la base de datos"});
+    return res.status(201).json(note)
+})
+
+// 
+
 
 module.exports = {
     getAllClinicalNotes,
-    createClinicalNote
+    createClinicalNote,
+    getClinicalNoteById
 }
