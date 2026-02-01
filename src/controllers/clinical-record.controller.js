@@ -23,7 +23,7 @@ const getClinicalRecordsById = catchError(async(req, res) => {
 })
 
 // Update clinical record by ID
-const updateClinicalRecords = catchError(async(res, res) => {
+const updateClinicalRecords = catchError(async(req, res) => {
     const { id } = req.params;
     const data = req.body;
     const clinicalUpdate = await ClinicalRecord.update(data, {where: {id}})
@@ -32,8 +32,8 @@ const updateClinicalRecords = catchError(async(res, res) => {
 })
 
 // Remove clinical record by ID
-const removeClinicalRecords = catchError(async (req, res) => {
-    const { id } = res.params;
+const removeClinicalRecords = catchError(async(req, res) => {
+    const { id } = req.params;
     const clinicalRemove = await ClinicalRecord.destroy({where: {id}});
     if(clinicalRemove !== 1) return res.status(404).json({Error: "La histora clinica no se encontro"});
     return res.status(204).send()
