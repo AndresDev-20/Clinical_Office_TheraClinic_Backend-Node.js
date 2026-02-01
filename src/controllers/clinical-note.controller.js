@@ -8,8 +8,14 @@ const getAllClinicalNotes = catchError(async(req, res) => {
 })
 
 // Add new clinical note
+const createClinicalNote = catchError(async(req, res) => {
+    const data = req.body;
+    const newClinicalNote = await ClinicalNote.create(data);
+    return res.status(201).json({Message: "Nota creada"}, newClinicalNote);
+})
 
 
 module.exports = {
-    getAllClinicalNotes
+    getAllClinicalNotes,
+    createClinicalNote
 }
