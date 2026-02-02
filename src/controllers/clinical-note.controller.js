@@ -22,13 +22,21 @@ const getClinicalNoteById = catchError(async(req, res) => {
     return res.status(201).json(note)
 })
 
-// Update clinical Note by ID
+// Update clinical note by ID
 const updateClinicalNote = catchError(async(req, res) => {
     const { id } = req.params;
     const data = req.body;
     const updateNote = await ClinicalNote.update(data, {where: {id}});
-    if(!updateNote) return res.status(404).json({Error: "No se pudo actualizar tal vez no esta en la base de datos"});
+    if(updateNote[0] === 0) return res.status(404).json({Error: "No se pudo actualizar tal vez no esta en la base de datos"});
     return res.status(200).json({Message: "Nota actualizada"})
+})
+
+// Remove clinical note by ID
+const removeClinicalNoteById = catchError(async(req, res) => {
+    const { id } = req.params;
+    const removeNote = await ClinicalNote.destroy({where: {id}});
+    if(removeNote !== 1) return res.status(404).json({Error: "La nota clinica no se elimino"});
+    return res.status(204).send()
 })
 
 
@@ -36,5 +44,6 @@ module.exports = {
     getAllClinicalNotes,
     createClinicalNote,
     getClinicalNoteById,
-    updateClinicalNote
+    updateClinicalNote,
+    removeClinicalNoteById
 }
