@@ -25,11 +25,16 @@ const getClinicalNoteById = catchError(async(req, res) => {
 // Update clinical Note by ID
 const updateClinicalNote = catchError(async(req, res) => {
     const { id } = req.params;
+    const data = req.body;
+    const updateNote = await ClinicalNote.update(data, {where: {id}});
+    if(!updateNote) return res.status(404).json({Error: "No se pudo actualizar tal vez no esta en la base de datos"});
+    return res.status(200).json({Message: "Nota actualizada"})
 })
 
 
 module.exports = {
     getAllClinicalNotes,
     createClinicalNote,
-    getClinicalNoteById
+    getClinicalNoteById,
+    updateClinicalNote
 }
