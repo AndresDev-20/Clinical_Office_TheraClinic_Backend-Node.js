@@ -16,7 +16,7 @@ const createClinicalNote = catchError(async(req, res) => {
 
 // Filter clinical note by ID
 const getClinicalNoteById = catchError(async(req, res) => {
-    const { id } = req.body;
+    const { id } = req.params;
     const note = await ClinicalNote({where: {id}});
     if(!note) return res.status(404).json({Err: "No se encontro el registro de la nota en la base de datos"});
     return res.status(201).json(note)
@@ -26,7 +26,7 @@ const getClinicalNoteById = catchError(async(req, res) => {
 const updateClinicalNote = catchError(async(req, res) => {
     const { id } = req.params;
     const data = req.body;
-    const updateNote = await ClinicalNote.update(data, {where: {id}});
+    const updateNote = await ClinicalNote.update.findByPk(data, {where: {id}});
     if(updateNote[0] === 0) return res.status(404).json({Error: "No se pudo actualizar tal vez no esta en la base de datos"});
     return res.status(200).json({Message: "Nota actualizada"})
 })
