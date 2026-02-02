@@ -22,7 +22,10 @@ const getClinicalNoteById = catchError(async(req, res) => {
     return res.status(201).json(note)
 })
 
-// 
+// Update clinical Note by ID
+const updateClinicalNote = catchError(async(req, res) => {
+    const { id } = req.params;
+})
 
 
 module.exports = {
