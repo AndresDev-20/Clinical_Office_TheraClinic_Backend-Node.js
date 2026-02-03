@@ -10,6 +10,7 @@ const productRouter = require('./product.routes');
 const prescriptionRouter = require('./prescription.routes');
 const invoiceRouter = require('./invoice.routes');
 const invoiceItemRouter = require('./invoice-item.routes');
+const paymentRouter = require('./payment.routes');
 
 const router = express.Router();
 router.use("/roles", roleRouter)
@@ -23,5 +24,6 @@ router.use("/products", productRouter)
 router.use("/prescriptions", prescriptionRouter)
 router.use("/invoices", invoiceRouter)
 router.use ("/invoice-items", invoiceItemRouter)
+router.use("/payments", paymentRouter)
 
 module.exports = router;
