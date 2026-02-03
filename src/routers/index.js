@@ -8,6 +8,7 @@ const clinicalNoteRouter = require('./clinical-note.routes');
 const appointmentRouter = require('./appointment.routes');
 const productRouter = require('./product.routes');
 const prescriptionRouter = require('./prescription.routes');
+const invoiceRouter = require('./invoice.routes');
 
 const router = express.Router();
 router.use("/roles", roleRouter)
@@ -19,5 +20,6 @@ router.use("/clinical-notes", clinicalNoteRouter)
 router.use("/appointments", appointmentRouter)
 router.use("/products", productRouter)
 router.use("/prescriptions", prescriptionRouter)
+router.use("/invoices", invoiceRouter)
 
 module.exports = router;
