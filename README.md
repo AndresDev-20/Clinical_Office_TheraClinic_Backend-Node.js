@@ -79,21 +79,29 @@ El proyecto está construido bajo una arquitectura modular orientada a dominios,
 
 ---
 
-## 🗄️ Estructura del proyecto
+## 📁 Estructura del proyecto
 
-Backend/
+```
+BACKEND/
+├── node_modules/
 ├── src/
 │   ├── api/
 │   │   ├── config/
-│   │   ├── controllers/
-│   │   ├── models/
 │   │   ├── migrations/
-│   │   ├── routes/
-│   │   └── middlewares/
+│   │   ├── models/
+│   │   └── seeders/
+│   ├── controllers/
+│   ├── routers/
+│   ├── utils/
+│   ├── app.js
 │   └── server.js
+├── .env
+├── .gitignore
 ├── .sequelizerc
+├── package-lock.json
 ├── package.json
 └── README.md
+```
 
 ---
 

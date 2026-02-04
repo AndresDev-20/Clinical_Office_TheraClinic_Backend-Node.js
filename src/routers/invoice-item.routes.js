@@ -1,16 +1,14 @@
 const express = require("express");
-const { getAllInvoices, createInvoice, updateInvoice } = require("../controllers/invoice.controller");
-const { getInvoiceItemById, removeInvoiceItemById } = require("../controllers/invoice-item.controller");
+const { getInvoiceItemById, removeInvoiceItemById, getAllInvoiceItems, createInvoiceItem, updateInvoiceItem } = require("../controllers/invoice-item.controller");
 
 const invoiceItemRouter = express.Router();
 
 invoiceItemRouter.route("/")
-                 .get(getAllInvoices)
-                 .post(createInvoice)
+                 .get(getAllInvoiceItems)
+                 .post(createInvoiceItem)
 invoiceItemRouter.route("/:id")
                  .get(getInvoiceItemById)
-                 .post(createInvoice)
-                 .put(updateInvoice)
+                 .put(updateInvoiceItem)
                  .delete(removeInvoiceItemById)
 
 module.exports = invoiceItemRouter;
