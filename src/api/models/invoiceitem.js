@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
 
       subTotal: {
         type: DataTypes.DECIMAL(12, 2),
-        allowNull: false,
+        allowNull: true,
       },
     },
     {
