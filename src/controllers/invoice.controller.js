@@ -1,9 +1,35 @@
-const { Invoice } = require("../api/models");
+const { Invoice, Patient, InvoiceItem, Product, Payment } = require("../api/models");
 const catchError = require("../utils/catchError");
 
 // Get all invoices
 const getAllInvoices = catchError(async (req, res) => {
-    const invoices = await Invoice.findAll();
+    const invoices = await Invoice.findAll({
+        attributes: {exclude: ["updatedAt", "patient_id", "doctor_id"]},
+        include: [
+            {
+                model: Patient, 
+                as: "patient",
+                attributes: ["id", "firstNames", "lastNames"]
+            },
+            {
+                model: InvoiceItem,
+                as: "items",
+                attributes: ["amount", "unitPrice", "subTotal"],
+                include: [
+                    {
+                        model: Product,
+                        as: "product",
+                        attributes: ["name"]
+                    }
+                ]
+            },
+            {
+                model: Payment,
+                as: "payments",
+                attributes: ["monto", "createdAt"]
+            }
+        ]
+    });
     return res.status(200).json(invoices);
 });
 
