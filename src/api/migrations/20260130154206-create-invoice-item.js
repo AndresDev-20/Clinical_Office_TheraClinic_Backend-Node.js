@@ -1,53 +1,66 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('InvoiceItems', {
+    await queryInterface.createTable("InvoiceItems", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       invoice_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "invoices",
-          key: "id"
-        }
+          model: "Invoices",
+          key: "id",
+        },
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
       },
+
       product_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "products",
-          key: "id"
-        }
+          model: "Products",
+          key: "id",
+        },
+        onDelete: "RESTRICT",
+        onUpdate: "CASCADE",
       },
-      amount: {
-        type: Sequelize.STRING,
-        allowNull: false
+
+      quantity: {
+        // 🔥 cambia "amount" por quantity
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
+
       unitPrice: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.DECIMAL(12, 2),
+        allowNull: false,
       },
+
       subTotal: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.DECIMAL(12, 2),
+        allowNull: false,
       },
+
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
+
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('InvoiceItems');
-  }
+    await queryInterface.dropTable("InvoiceItems");
+  },
 };

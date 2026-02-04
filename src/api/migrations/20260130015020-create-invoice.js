@@ -23,21 +23,29 @@ module.exports = {
         references: {
           model: "Users",
           key: "id"
-        }
+        },
+        onDelete: "RESTRICT",
+        onUpdate: "CASCADE"
       },
       total: {
-        type: Sequelize.INTEGER
+        allowNull: false,
+        defaultValue: 0,
+        type: Sequelize.DECIMAL(12,2)
       },
       state: {
-        type: Sequelize.STRING
+        type: Sequelize.ENUM("Pendiente", "Parcial", "Pagada"),
+        allowNull: false,
+        defaultValue: "Pendiente"
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+         allowNull: false,
+         type: Sequelize.DATE,
+         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP")
       }
     });
   },
