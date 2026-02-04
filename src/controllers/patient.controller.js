@@ -5,10 +5,12 @@ const catchError = require("../utils/catchError")
 // viewing patient
 const getAllPatient = catchError(async(req, res) => {
     const patients = await Patient.findAll({
-        include: {
+        attributes: {exclude: ["office_id"]},
+        include: [{
             model: Office,
-            as: "office"
-        }
+            as: "office",
+            attributes: ["id", "nameOffice", "city"]
+        }]
     });
     return res.status(201).json(patients)
 })
@@ -17,10 +19,12 @@ const getAllPatient = catchError(async(req, res) => {
 const getOnePatient = catchError(async(req, res) => {
     const { id } = req.params;
     const patient = await Patient.findByPk(id, {
-        include: {
+        attributes: {exclude: ["office_id"]},
+        include: [{
             model: Office,
-            as: "office"
-        }
+            as: "office",
+            attributes: ["id", "nameOffice", "city"]
+        }]
     });
     if(!patient) return res.status(404).json({Error: "El paciente no se encuentra en nuestra base de datos"});
     return res.status(201).json(patient)
