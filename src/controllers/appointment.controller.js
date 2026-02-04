@@ -1,9 +1,16 @@
-const { Appointment } = require("../api/models");
+const { Appointment, Patient, User, Office } = require("../api/models");
 const catchError = require("../utils/catchError");
 
 // Get all appointments
 const getAllAppointments = catchError(async (req, res) => {
-    const appointments = await Appointment.findAll();
+    const appointments = await Appointment.findAll({
+        attributes: {exclude: ["patient_id", "doctor_id", "office_id", "createdAt","updatedAt"]},
+        include: [
+            { model: Patient, as: "Patient", attributes: ["id", "firstNames", "lastNames"] },
+            { model: User, as: "doctor", attributes: ["id", "names"] },
+            { model: Office, as: "office", attributes: ["id", "nameOffice"] }
+        ]
+    });
     return res.status(200).json(appointments);
 });
 
@@ -20,7 +27,15 @@ const createAppointment = catchError(async (req, res) => {
 // Get appointment by ID
 const getAppointmentById = catchError(async (req, res) => {
     const { id } = req.params;
-    const appointment = await Appointment.findOne({ where: { id } });
+    const appointment = await Appointment.findByPk(id,
+        {
+        attributes: {exclude: ["patient_id", "doctor_id", "office_id", "createdAt","updatedAt"]},
+        include: [
+            { model: Patient, as: "Patient", attributes: ["id", "firstNames", "lastNames"] },
+            { model: User, as: "doctor", attributes: ["id", "names"] },
+            { model: Office, as: "office", attributes: ["id", "nameOffice"] }
+        ]
+    });
     if (!appointment) return res.status(404).json({
         error: "Cita no encontrada"
     });
