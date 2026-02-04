@@ -7,11 +7,12 @@ const bcrypt = require('bcrypt')
 // Viewing users
 const getAllUsers = catchError(async(req, res) => {
     const users = await User.findAll({
-        attributes: {exclude: ["password"]},
-        include: { 
-            model: Role, 
-            as: 'role'
-        }});
+        attributes: {exclude: ["password", "role_id"]},
+        include: [{
+            model: Role,
+            as: "role",
+            attributes: ["id", "nameRole", "description"]
+        }]});
     return res.status(201).json(users)
 });
 
@@ -19,13 +20,13 @@ const getAllUsers = catchError(async(req, res) => {
 const getUsersById = catchError(async(req, res) => {
     const { id } = req.params;
     const user = await User.findByPk(
-        id,
-        {
-        attributes: {exclude: ["password"]},
-        include: { 
-            model: Role, 
-            as: 'role'
-        }
+        id,{
+            attributes: {exclude: ["password", "role_id"]},
+            include: [{
+                model: Role,
+                as: "role",
+                attributes: ["id", "nameRole", "description"]
+            }]
     }
     )
     if(!user) return res.status(404).json({error:"El usuario no existe en la base de datos"});
