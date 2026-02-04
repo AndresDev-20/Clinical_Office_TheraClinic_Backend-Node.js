@@ -6,7 +6,7 @@ const clinicalNoteRouter = express.Router();
 clinicalNoteRouter.route("/")
                   .get(getAllClinicalNotes)
                   .post(createClinicalNote)
-clinicalNoteRouter.route("/")
+clinicalNoteRouter.route("/:id")
                   .get(getClinicalNoteById)
                   .put(updateClinicalNote)
                   .delete(removeClinicalNoteById)
