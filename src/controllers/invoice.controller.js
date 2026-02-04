@@ -14,7 +14,7 @@ const getAllInvoices = catchError(async (req, res) => {
             {
                 model: InvoiceItem,
                 as: "items",
-                attributes: ["amount", "unitPrice", "subTotal"],
+                attributes: ["quantity", "unitPrice", "subTotal"],
                 include: [
                     {
                         model: Product,
@@ -26,7 +26,7 @@ const getAllInvoices = catchError(async (req, res) => {
             {
                 model: Payment,
                 as: "payments",
-                attributes: ["monto", "createdAt"]
+                attributes: ["amount", "method", "payment_date"]
             }
         ]
     });

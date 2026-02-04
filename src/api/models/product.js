@@ -44,18 +44,6 @@ module.exports = (sequelize, DataTypes) => {
           min: 0,
         },
       },
-
-      // 🔹 Opcional pero recomendable
-      description: {
-        type: DataTypes.TEXT,
-        allowNull: true,
-      },
-
-      // 🔹 Control de estado del producto
-      isActive: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true,
-      },
     },
     {
       sequelize,
