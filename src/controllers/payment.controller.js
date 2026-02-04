@@ -1,4 +1,4 @@
-const Payment = require("../api/models");
+const { Payment } = require("../api/models");
 const catchError = require("../utils/catchError");
 
 // Get all payments

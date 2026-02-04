@@ -1,4 +1,4 @@
-const InvoiceItem = require("../api/models");
+const { InvoiceItem } = require("../api/models");
 const catchError = require("../utils/catchError");
 
 // Get all invoice items

@@ -1,4 +1,4 @@
-const Appointment = require("../api/models");
+const { Appointment } = require("../api/models");
 const catchError = require("../utils/catchError");
 
 // Get all appointments

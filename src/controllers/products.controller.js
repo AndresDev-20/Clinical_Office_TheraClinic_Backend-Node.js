@@ -1,4 +1,4 @@
-const Product = require("../api/models");
+const { Product } = require("../api/models");
 const catchError = require("../utils/catchError");
 
 // Get all products

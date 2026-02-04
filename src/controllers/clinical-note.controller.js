@@ -1,4 +1,4 @@
-const ClinicalNote = require("../api/models")
+const { ClinicalNote } = require("../api/models")
 const catchError = require("../utils/catchError");
 
 // Viewing clinical notes

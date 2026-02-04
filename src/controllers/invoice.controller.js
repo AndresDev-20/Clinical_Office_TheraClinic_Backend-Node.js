@@ -1,4 +1,4 @@
-const Invoice = require("../api/models");
+const { Invoice } = require("../api/models");
 const catchError = require("../utils/catchError");
 
 // Get all invoices

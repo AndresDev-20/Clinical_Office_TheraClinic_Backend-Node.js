@@ -1,4 +1,4 @@
-const Prescription = require("../api/models");
+const { Prescription } = require("../api/models");
 const catchError = require("../utils/catchError");
 
 // Get all prescriptions
