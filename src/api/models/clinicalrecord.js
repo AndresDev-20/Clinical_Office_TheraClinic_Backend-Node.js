@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 
       ClinicalRecord.belongsTo(models.User, {
         foreignKey: "doctor_id",
-        as: "user"
+        as: "doctor"
       })
 
       ClinicalRecord.hasMany(models.ClinicalNote, {
